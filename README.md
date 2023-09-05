@@ -54,3 +54,43 @@ Enable DNS resolutions
 <img width="719" alt="Screenshot 2023-09-05 150322" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/48bfeef1-90fe-498f-a848-3d768d1e4556">
 
 <img width="823" alt="Screenshot 2023-09-05 150222" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/923cd235-f781-42b6-a2f5-36e169e4d167">
+
+Step 2: Create the web tier
+
+In the AWS Console Home, search for and select "EC2" resource.
+
+In the EC2 Console, select "Launch Instances"
+<img width="913" alt="Screenshot 2023-09-05 150924" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/4c74f007-b520-48e8-a5f4-d76f22b88949">
+Name: Web server
+Key pair: 3 tier
+Edit Network Settings
+Select "3 tier project-vpc" and one of the web subnets.
+Select Enable "auto assign public ip"
+Select create security group
+Security group name: WebSG
+Rules: SSH, port 22 and HTTP, port 80
+HTTP source: Anywhere
+
+User Data
+#!/bin/bash
+yum update -y 
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+cd var/www/html
+sudo echo "<h1> ELUS MEDICAL CONSULT</h1>" >> index.html
+
+Click "Launch Instance"
+
+Click "View Instances"
+
+Refresh until status check for the instance shows "2/2 checks passed".
+<img width="721" alt="Screenshot 2023-09-05 153419" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/af62c57a-f2ca-469c-b5c2-d42af21cf4ba">
+
+Select the running Web server instance.
+
+Copy the public ip of theinstance and paste in a new web page.
+
+A web page with the details specified in the user data shows on the screen.
+
+<img width="932" alt="Screenshot 2023-09-05 153617" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/70de4cd2-7a4e-4a12-bf32-12d7e6c40fb2">
