@@ -49,3 +49,8 @@ Enable DNS resolutions
 <img width="684" alt="Screenshot 2023-09-05 145232" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/16f0fa58-952a-48b0-b097-e4d1db2ff296">
 
 <img width="704" alt="Screenshot 2023-09-05 145252" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/c535257e-f2d7-492e-9ac5-930c5a8cee19">
+
+9. Enable auto-assign public IPv4 address for the public subnets.
+<img width="719" alt="Screenshot 2023-09-05 150322" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/48bfeef1-90fe-498f-a848-3d768d1e4556">
+
+<img width="823" alt="Screenshot 2023-09-05 150222" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/923cd235-f781-42b6-a2f5-36e169e4d167">
