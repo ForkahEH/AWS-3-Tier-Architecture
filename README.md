@@ -1,4 +1,4 @@
-AWS 3 tier application architecture.
+"<h1>AWS 3 tier application architecture</h1>"
 
 Overview
 
@@ -98,7 +98,7 @@ systemctl enable httpd
 
 cd var/www/html
 
-sudo echo "<h1>ELUS MEDICAL CONSULT</h1>" >> index.html
+sudo echo "<h1> ELUS MEDICAL CONSULT</h1>" >> index.html
 Click "Launch Instance"
 
 Click "View Instances"
