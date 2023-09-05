@@ -309,4 +309,62 @@ In the Route tables page, select private route tables 1 and 2 and check that the
 <img width="705" alt="Screenshot 2023-09-05 194117" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/b45b5177-b773-44c8-be18-d4d56093b8f3">
 <img width="716" alt="Screenshot 2023-09-05 194047" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/d7bab139-8c5a-46da-ad47-ff366aada414">
 
+Step 4: Create the database tier
 
+1. In the AWS Console Home, search for and select "RDS" resource.
+
+2. In the RDS Console, select "Subnet groups" and click "Create DB subnet group".
+
+<img width="913" alt="Screenshot 2023-09-05 195610" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/848cc8a2-875f-4aa7-86de-39eecc9496ae">
+
+3. In the Create DB subnet group page, enter the name of the subnet group: DatabaseSubnetGroup.
+
+<img width="620" alt="Screenshot 2023-09-05 200912" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/d5d349f7-a62e-4843-ad39-f141616b81ca">
+
+4. Select the 3 tier project-vpc, the Availability Zones( us-east-1a, us-east-1b), and the data subnets. Click "Create".
+
+<img width="583" alt="Screenshot 2023-09-05 200512" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/bf941d39-8d5a-4530-9316-a4ecf557a2cb">
+
+5. Click on “Databases” on the RDS console, and then “Create database”. Select “Standard create” and “MySQL”.
+
+<img width="904" alt="Screenshot 2023-09-05 201056" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/095f85ed-d9e8-4697-b4c1-d8955355e4a7">
+
+<img width="603" alt="Screenshot 2023-09-05 201202" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/e0fce439-4e38-4fcc-9ac0-9f9ebb1ae2ed">
+
+6. Select the free tier template.
+
+<img width="654" alt="Screenshot 2023-09-05 201345" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/23d3a176-586f-4bbf-8106-340f86c67835">
+
+7. Under Settings, enter the name of the datebase: threetiervpcdatabse
+
+<img width="584" alt="Screenshot 2023-09-05 201729" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/5e2d077f-bf6f-4be5-9671-c577530f8f74">
+
+8. Under Credential settings, enter the master username and master password.
+
+<img width="609" alt="Screenshot 2023-09-05 201840" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/01a42574-e37e-49a6-b997-f8f948edeb86">
+
+9. Under Connectivity, select "Don’t connect to an EC2 compute resource" and select the "3 tier project-vpc"
+
+<img width="587" alt="Screenshot 2023-09-05 202114" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/afdd169c-7b57-4371-b20a-432c4c0fba99">
+
+10. Under VPC security group, select "Create new". Enter the New VPC security group name: dataSG and select the us-east-1a availability zone.
+
+<img width="614" alt="Screenshot 2023-09-05 202701" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/41c7f7d8-a1f8-4733-9710-8ffa3324c8fd">
+
+11. Click "Create database"
+
+12. Update the Data tier Security Group by navigating to the VPC console. Select Security groups and click on "dataSG". By default, the database security group has an inbound rule to allow MySQL/Aurora traffic on port 3306 the host IP address. For security reasons, only inbound traffic for MySQL from the application tier security group will be allowed.
+
+13. Click "Edit inbound rules". Delete the default rule and click "Add rule". Select “MySQL/Aurora” for Type, choose custom Source, and then select the application tier security group and “Save rules.”
+
+<img width="877" alt="Screenshot 2023-09-05 203842" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/bcf45bef-71a3-4bc7-a6bf-21a3fd8ad671">
+
+14. Confirm the route tables for the private subnets are not internet-facing and attached to the app subnets. To do this:
+
+Navigate to the VPC Console.
+
+Select the "3 tier project-vpc" and select "Route tables" in the VPC dashboard.
+
+In the Route tables page, select private route table 3 and check that it associated with the data subnets. Also check the routes and confirm the targets as the nat gateway and local.
+
+<img width="700" alt="Screenshot 2023-09-05 204321" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/ca26deeb-1c17-4523-a399-9a7e18ee0c7b">
