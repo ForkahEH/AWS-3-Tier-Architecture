@@ -92,5 +92,72 @@ Select the running Web server instance.
 Copy the public ip of theinstance and paste in a new web page.
 
 A web page with the details specified in the user data shows on the screen.
+<img width="879" alt="Screenshot 2023-09-05 154208" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/e4640e6b-a5a8-4bc4-91b0-5bf8e11db7bb">
 
-<img width="932" alt="Screenshot 2023-09-05 153617" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/70de4cd2-7a4e-4a12-bf32-12d7e6c40fb2">
+Navigate back to the EC2 console.
+
+Select the running instance of the web server, Click on the actions tab, select "Images and template" from the drop down menu, select "create template from instance" from the drop down menu.
+
+<img width="724" alt="Screenshot 2023-09-05 154815" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/32300c19-cdfc-40a3-833c-80380d1f1b53">
+
+In the "Create launch template" window, enter the name of the launch template: Web server template. Select "Auto Scaling guidance" since EC2 autoscaling will be used.
+<img width="758" alt="Screenshot 2023-09-05 161034" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/46b98a43-2ac9-4cd1-9a06-9882ab44f8a2">
+
+
+In the Network settings section, select "Don't include in launch template" for the subnet section.
+
+Select the existing web server security group.
+
+<img width="656" alt="Screenshot 2023-09-05 160805" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/8ba67708-d52d-41f4-b991-6aa6c075556d">
+
+Confirm the rest of the settings and click "Create launch template".
+
+Navigate back to the EC2 Console. Select "Auto Scaling group".
+
+Click "Create Auto Scaling group"
+
+In the Create Auto Scaling group page, enter the name of the Auto Scalig group: WebServerASG
+
+<img width="857" alt="Screenshot 2023-09-05 161640" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/c4630e49-97e8-4459-973d-3d22cab7f784">
+
+Select  "WebServerTemplate" in the "Launch Template" section. Leave the defaults and click Next.
+
+<img width="593" alt="Screenshot 2023-09-05 161948" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/5ed4e59b-3698-499f-9cbd-994be62b7dd9">
+
+Select "3 tier project-vpc" and the web tier subnets, click Next.
+
+<img width="823" alt="Screenshot 2023-09-05 162227" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/7b7e5a80-bc77-4a16-b42a-3d95117633c5">
+
+Select "attach to a new load balancer". For the Load Balancer type, select "Application Load Balancer" and select "Internet-facing"
+
+<img width="851" alt="Screenshot 2023-09-05 162851" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/104fd1d7-6052-4845-a22f-d16256842bbb">
+
+<img width="612" alt="Screenshot 2023-09-05 163027" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/8cb15ed5-d50c-4092-a0c4-b6e2cadfc7ca">
+
+Under "Listeners and routing", create a new target group "WebServerASG-ALB"
+
+<img width="595" alt="Screenshot 2023-09-05 163316" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/a51b6b48-3fb3-46d5-9a74-ec8028caa064">
+
+Under "Health Checks", enable Elastic Load Balancing health checks.
+
+<img width="611" alt="Screenshot 2023-09-05 163701" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/2acd1730-d73c-40e2-9cb8-3be6c6a5d380">
+
+Under Additional settings, select Enable group metrics collection within CloudWatch and Enable default instance warmup. Click Next.
+
+<img width="637" alt="Screenshot 2023-09-05 163858" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/d1ec5830-c394-4800-a602-ce457e2113f9">
+
+Under Group size, set minimum capacity to 1, desired capacity to to and maximum capacity to 3.
+
+<img width="631" alt="Screenshot 2023-09-05 164120" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/0e001893-7eaa-4b19-9e3f-d2511737cf79">
+
+Under Scaling policies, select "Target tracking scaling policy". Click Next.
+
+<img width="697" alt="Screenshot 2023-09-05 164438" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/d61aea2f-4dd3-4044-b759-9666230f0b47">
+
+Notifications can be set to send SNS topics whenever Amazon EC2 Auto Scaling launches or terminates the EC2 instances in your Auto Scaling group. Its optional.
+
+Click Next.
+
+Review and Click "Create Auto Scaling Group".
+
+
