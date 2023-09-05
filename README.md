@@ -97,8 +97,8 @@ systemctl start httpd
 systemctl enable httpd
 
 cd var/www/html
-sudo echo "<h1> ELUS MEDICAL CONSULT</h1>" >> index.html
 
+sudo echo /"<h1> ELUS MEDICAL CONSULT</h1>"/ >> index.html
 Click "Launch Instance"
 
 Click "View Instances"
