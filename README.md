@@ -104,7 +104,14 @@ Click "Launch Instance"
 
 Click "View Instances"
 
-[launch instance complete.pdf](https://github.com/ForkahEH/AWS-3-Tier-Architecture/files/12526982/launch.instance.complete.pdf)
+![Picture1](https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/357f95ba-9459-4839-b9d9-94b5a324f7e3)
+<img width="647" alt="Screenshot 2023-09-05 183324" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/9b349d55-fb82-4d76-95a5-c31000aaf7cc">
+<img width="614" alt="Screenshot 2023-09-05 183402" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/59131c04-8853-455d-9dd7-37856a8c8ad8">
+<img width="619" alt="Screenshot 2023-09-05 183435" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/6562de58-1d07-4f56-ab1e-6740e994817a">
+<img width="610" alt="Screenshot 2023-09-05 183455" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/c8fd32fd-cad0-4f7a-bbb7-b1c02f27d131">
+<img width="608" alt="Screenshot 2023-09-05 183529" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/c8b0e5de-bdd6-451a-8346-562b6746e650">
+<img width="619" alt="Screenshot 2023-09-05 183612" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/eb4d9279-028d-4d1c-be48-d044585abbbb">
+
 
 4. Refresh until status check for the instance shows "2/2 checks passed".
 <img width="721" alt="Screenshot 2023-09-05 153419" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/af62c57a-f2ca-469c-b5c2-d42af21cf4ba">
