@@ -1,4 +1,4 @@
-"<h1>AWS 3 tier application architecture</h1>"
+<h1>AWS 3 tier application architecture</h1>
 
 Overview
 
