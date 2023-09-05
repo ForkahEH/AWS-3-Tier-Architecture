@@ -7,7 +7,7 @@ Users interact with the presentation/web tier(usually called the front-end), the
 A three tier architecture has a number of advantages including decreased app deployment time, increased scalability and  security since each tier has specific functions. 
 In this project, a three tier application is created using AWS resources.
 
-Step 1: Create the VPC 
+<h1>Step 1: Create the VPC</h1> 
 
 1. In the AWS Console Home, search for and select "VPC" resource.
 
@@ -58,7 +58,7 @@ Enable DNS resolutions
 
 <img width="823" alt="Screenshot 2023-09-05 150222" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/923cd235-f781-42b6-a2f5-36e169e4d167">
 
-Step 2: Create the web tier
+<h1>Step 2: Create the web tier</h1>
 
 1. In the AWS Console Home, search for and select "EC2" resource.
 
@@ -201,7 +201,7 @@ In the Route tables page, select the public route table and check that it is ass
 <img width="902" alt="Screenshot 2023-09-05 182555" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/3d8540c2-b44e-417f-912c-ac41c0449b44">
 
 
-Step 3: Create the application tier
+<h1>Step 3: Create the application tier</h1>
 
 1. In the AWS Console Home, search for and select "EC2" resource.
 
@@ -308,7 +308,7 @@ In the Route tables page, select private route tables 1 and 2 and check that the
 <img width="705" alt="Screenshot 2023-09-05 194117" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/b45b5177-b773-44c8-be18-d4d56093b8f3">
 <img width="716" alt="Screenshot 2023-09-05 194047" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/d7bab139-8c5a-46da-ad47-ff366aada414">
 
-Step 4: Create the database tier
+<h1>Step 4: Create the database tier</h1>
 
 1. In the AWS Console Home, search for and select "RDS" resource.
 
@@ -368,11 +368,10 @@ In the Route tables page, select private route table 3 and check that it associa
 
 <img width="700" alt="Screenshot 2023-09-05 204321" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/ca26deeb-1c17-4523-a399-9a7e18ee0c7b">
 
-Step 5: Test the Connectivity of the app tier.
+<h1>Step 5: Test the Connectivity of the app tier</h1>
 
 1. Connect to web server instance using SSH.
 <img width="565" alt="Screenshot 2023-09-05 205312" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/cbbd80eb-a0bc-41e6-b788-82ea6261798a">
 
 2. Ping the app tier from the web tier using the app tier private IPv4 address.
 <img width="388" alt="Screenshot 2023-09-05 205557" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/0ebd7ae6-2497-46f6-829c-8d3d5285b0de">
-
