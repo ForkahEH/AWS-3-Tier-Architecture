@@ -125,7 +125,8 @@ A web page with the details specified in the user data shows on the screen.
 
 Navigate back to the EC2 console.
 
-7. Select the running instance of the web server, Click on the actions tab, select "Images and template" from the drop down menu, select "create template from instance" from the drop down menu.
+7. Create a Launch Template and Auto Scaling Group.
+Select the running instance of the web server, Click on the actions tab, select "Images and template" from the drop down menu, select "create template from instance" from the drop down menu.
 
 <img width="724" alt="Screenshot 2023-09-05 154815" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/32300c19-cdfc-40a3-833c-80380d1f1b53">
 
@@ -224,3 +225,88 @@ Security group name: AppSG
 Select “Custom” source type, and source "WebSG".
 <img width="603" alt="Screenshot 2023-09-05 184812" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/114b9970-d277-4cbb-9af6-af0ffd1ed227">
 <img width="598" alt="Screenshot 2023-09-05 184906" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/b2a24579-fcd6-4187-a513-8e3a3153c3c2">
+
+Click "Launch Instance"
+
+Click "View  all Instances"
+
+4. Create a Launch Template
+
+Select the running instance of the app server, Click on the actions tab, select "Images and template" from the drop down menu, select "create template from instance" from the drop down menu.
+
+<img width="734" alt="Screenshot 2023-09-05 185800" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/00da8fac-0bad-406c-b6bf-61d9227364aa">
+
+In the "Create launch template" window, enter the name of the launch template: Web server template. Select "Auto Scaling guidance" since EC2 autoscaling will be used.
+
+<img width="642" alt="Screenshot 2023-09-05 190158" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/1750cae8-b3c4-4765-ac86-6d564d4d2082">
+
+In the Network settings section, select "Don't include in launch template" for the subnet section.
+
+Select the existing app server security group.
+
+<img width="621" alt="Screenshot 2023-09-05 190316" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/a4194496-3a95-4c4e-a9f7-0cb31e5cb4a8">
+
+Scroll to the bottom of the page and click "Create launch template"
+
+<img width="612" alt="Screenshot 2023-09-05 190421" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/e8ef6577-12cb-4270-97e7-9954bd0aa5a4">
+
+5. Create Auto Scaling Group
+Navigate back to the EC2 Console. Select "Auto Scaling group".
+
+Click "Create Auto Scaling group"
+
+In the Create Auto Scaling group page, enter the name of the Auto Scalig group: AppServerASG
+
+Select  "AppServerTemplate" in the "Launch Template" section. Leave the defaults and click Next.
+
+<img width="618" alt="Screenshot 2023-09-05 190657" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/50bb26f7-6902-4de0-8357-6efefb2f170f">
+
+Select "3 tier project-vpc" and the app tier subnets, click Next.
+
+<img width="580" alt="Screenshot 2023-09-05 190758" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/57d932bd-456c-4a2e-be0e-5e8ded73ea6c">
+
+Select "attach to a new load balancer". For the Load Balancer type, select "Application Load Balancer" and select "Internal"
+
+<img width="578" alt="Screenshot 2023-09-05 191322" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/09e96f7b-c30f-4977-8d20-2ee99ae955da">
+
+Under "Listeners and routing", create a new target group "APPServerASG-ALB"
+
+<img width="583" alt="Screenshot 2023-09-05 191500" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/55532049-4fce-47a5-b356-1c6e24223259">
+
+Under "Health Checks", enable Elastic Load Balancing health checks.
+
+<img width="611" alt="Screenshot 2023-09-05 163701" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/2acd1730-d73c-40e2-9cb8-3be6c6a5d380">
+
+Under Additional settings, select Enable group metrics collection within CloudWatch and Enable default instance warmup. Click Next.
+
+<img width="637" alt="Screenshot 2023-09-05 163858" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/d1ec5830-c394-4800-a602-ce457e2113f9">
+
+Under Group size, set minimum capacity to 1, desired capacity to to and maximum capacity to 3.
+
+<img width="631" alt="Screenshot 2023-09-05 164120" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/0e001893-7eaa-4b19-9e3f-d2511737cf79">
+
+Under Scaling policies, select "Target tracking scaling policy". Click Next.
+
+<img width="697" alt="Screenshot 2023-09-05 164438" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/d61aea2f-4dd3-4044-b759-9666230f0b47">
+
+Notifications can be set to send SNS topics whenever Amazon EC2 Auto Scaling launches or terminates the EC2 instances in your Auto Scaling group. Its optional.
+
+Click Next.
+
+Review and Click "Create Auto Scaling Group".
+
+<img width="612" alt="Screenshot 2023-09-05 191640" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/02d2f7f7-631d-411d-9b6e-23d40bc7d334">
+
+
+6. Confirm the route tables for the private subnets are not internet-facing and attached to the app subnets. To do this:
+
+Navigate to the VPC Console.
+
+Select the "3 tier project-vpc" and select "Route tables" in the VPC dashboard.
+
+In the Route tables page, select private route tables 1 and 2 and check that they are associated with the app subnets. Also check the routes and confirm the targets as the nat gateway and local.
+<img width="712" alt="Screenshot 2023-09-05 194442" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/287dac57-8054-410e-aebf-fa0b492fd412">
+<img width="705" alt="Screenshot 2023-09-05 194117" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/b45b5177-b773-44c8-be18-d4d56093b8f3">
+<img width="716" alt="Screenshot 2023-09-05 194047" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/d7bab139-8c5a-46da-ad47-ff366aada414">
+
+
