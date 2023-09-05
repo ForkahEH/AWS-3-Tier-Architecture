@@ -39,10 +39,13 @@ Enable DNS hostnames
 Enable DNS resolutions
 
 5. Click “Create VPC”
+
 ![Picture2](https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/ae0f226c-d0f3-4c6c-a253-74e9d58ff4b6)
 
 6. Click “View VPC” after the VPC and all its resources are created.
+
 7. Click "Subnets" from the VPC dashboard.
+
 8. In the Subnets console, the tags of the various subnets are edited to reflect the various tiers. This allows easy identification of subnets.
 <img width="701" alt="Screenshot 2023-09-05 145201" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/090210c1-fb50-4e6f-953b-5857b7fbc88e">
 
@@ -57,50 +60,70 @@ Enable DNS resolutions
 
 Step 2: Create the web tier
 
-In the AWS Console Home, search for and select "EC2" resource.
+1. In the AWS Console Home, search for and select "EC2" resource.
 
-In the EC2 Console, select "Launch Instances"
+2. In the EC2 Console, select "Launch Instances"
+
 <img width="913" alt="Screenshot 2023-09-05 150924" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/4c74f007-b520-48e8-a5f4-d76f22b88949">
-Name: Web server
+
+3. In the "Launch Instance" page, enter the name of the webserver: Web server
+
 Key pair: 3 tier
-Edit Network Settings
+
+Select Edit in Network Settings
+
 Select "3 tier project-vpc" and one of the web subnets.
+
 Select Enable "auto assign public ip"
+
 Select create security group
+
 Security group name: WebSG
+
 Rules: SSH, port 22 and HTTP, port 80
+
 HTTP source: Anywhere
 
 User Data
+
 #!/bin/bash
+
 yum update -y 
+
 yum install -y httpd
+
 systemctl start httpd
+
 systemctl enable httpd
+
 cd var/www/html
+
 sudo echo "<h1> ELUS MEDICAL CONSULT</h1>" >> index.html
 
 Click "Launch Instance"
 
 Click "View Instances"
 
-Refresh until status check for the instance shows "2/2 checks passed".
+[launch instance complete.pdf](https://github.com/ForkahEH/AWS-3-Tier-Architecture/files/12526982/launch.instance.complete.pdf)
+
+4. Refresh until status check for the instance shows "2/2 checks passed".
 <img width="721" alt="Screenshot 2023-09-05 153419" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/af62c57a-f2ca-469c-b5c2-d42af21cf4ba">
 
-Select the running Web server instance.
+5. Select the running Web server instance.
 
-Copy the public ip of theinstance and paste in a new web page.
+6. Copy the public ip of theinstance and paste in a new web page.
 
 A web page with the details specified in the user data shows on the screen.
 <img width="879" alt="Screenshot 2023-09-05 154208" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/e4640e6b-a5a8-4bc4-91b0-5bf8e11db7bb">
 
 Navigate back to the EC2 console.
 
-Select the running instance of the web server, Click on the actions tab, select "Images and template" from the drop down menu, select "create template from instance" from the drop down menu.
+7. Select the running instance of the web server, Click on the actions tab, select "Images and template" from the drop down menu, select "create template from instance" from the drop down menu.
 
 <img width="724" alt="Screenshot 2023-09-05 154815" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/32300c19-cdfc-40a3-833c-80380d1f1b53">
 
-In the "Create launch template" window, enter the name of the launch template: Web server template. Select "Auto Scaling guidance" since EC2 autoscaling will be used.
+8. In the "Create launch template" window, enter the name of the launch template: Web server template. Select "Auto Scaling guidance" since EC2 autoscaling will be used.
+
 <img width="758" alt="Screenshot 2023-09-05 161034" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/46b98a43-2ac9-4cd1-9a06-9882ab44f8a2">
 
 
@@ -112,11 +135,11 @@ Select the existing web server security group.
 
 Confirm the rest of the settings and click "Create launch template".
 
-Navigate back to the EC2 Console. Select "Auto Scaling group".
+9. Navigate back to the EC2 Console. Select "Auto Scaling group".
 
-Click "Create Auto Scaling group"
+10. Click "Create Auto Scaling group"
 
-In the Create Auto Scaling group page, enter the name of the Auto Scalig group: WebServerASG
+11. In the Create Auto Scaling group page, enter the name of the Auto Scalig group: WebServerASG
 
 <img width="857" alt="Screenshot 2023-09-05 161640" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/c4630e49-97e8-4459-973d-3d22cab7f784">
 
@@ -159,5 +182,16 @@ Notifications can be set to send SNS topics whenever Amazon EC2 Auto Scaling lau
 Click Next.
 
 Review and Click "Create Auto Scaling Group".
+
+12. Confirm the route table for the public subnets are internet-facing and attached to the web subnets. To do this:
+
+Navigate to the VPC Console.
+
+Select the "3 tier project-vpc" and select "Route tables" in the VPC dashboard.
+
+In the Route tables page, select the public route table and check that it is associated with the web subnets( the public subnets).
+
+<img width="902" alt="Screenshot 2023-09-05 182555" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/3d8540c2-b44e-417f-912c-ac41c0449b44">
+
 
 
