@@ -368,3 +368,12 @@ Select the "3 tier project-vpc" and select "Route tables" in the VPC dashboard.
 In the Route tables page, select private route table 3 and check that it associated with the data subnets. Also check the routes and confirm the targets as the nat gateway and local.
 
 <img width="700" alt="Screenshot 2023-09-05 204321" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/ca26deeb-1c17-4523-a399-9a7e18ee0c7b">
+
+Step 5: Test the Connectivity of the app tier.
+
+1. Connect to web server instance using SSH.
+<img width="565" alt="Screenshot 2023-09-05 205312" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/cbbd80eb-a0bc-41e6-b788-82ea6261798a">
+
+2. Ping the app tier from the web tier using the app tier private IPv4 address.
+<img width="388" alt="Screenshot 2023-09-05 205557" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/0ebd7ae6-2497-46f6-829c-8d3d5285b0de">
+
