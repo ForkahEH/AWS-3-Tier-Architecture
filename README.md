@@ -16,13 +16,23 @@ Step 1: Create the VPC
 
 3. Select "VPC and more"
 4. I use tag auto-generation, which will tag all of the resources in this VPC for organization and easier access.
+
 Name tag auto-generation: 3 tier project
+
 IPv4 CIDR block: 10.0.0.0/16
+
 Tenancy: Default
+
 Availability zones: 2
+
 Number of public subnets: 2
+
 Number of private subnets: 4
+
 NAT gateways: In 1 AZ 
+
 VPC endpoints: None
+
 Enable DNS hostnames
+
 Enable DNS resolutions
