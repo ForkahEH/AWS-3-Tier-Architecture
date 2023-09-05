@@ -201,4 +201,26 @@ In the Route tables page, select the public route table and check that it is ass
 <img width="902" alt="Screenshot 2023-09-05 182555" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/3d8540c2-b44e-417f-912c-ac41c0449b44">
 
 
+Step 3: Create the application tier
 
+1. In the AWS Console Home, search for and select "EC2" resource.
+
+2. In the EC2 Console, select "Launch Instances"
+
+3. In the "Launch Instance" page, enter the name of the application server: App server
+
+Key pair: 3 tier
+
+Select Edit in Network Settings
+For the application tier, access is limited for security purposes. SSH, HTTP, and ICMP traffic is only allowed from our web tier security group. The ICMP rule will allow us to ping the application tier from the web tier.
+
+Select "3 tier project-vpc" and one of the web subnets.
+
+<img width="658" alt="Screenshot 2023-09-05 184739" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/cf3103ed-2d8f-4f36-b555-7423e4cb6e05">
+
+Select create security group
+
+Security group name: AppSG
+Select “Custom” source type, and source "WebSG".
+<img width="603" alt="Screenshot 2023-09-05 184812" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/114b9970-d277-4cbb-9af6-af0ffd1ed227">
+<img width="598" alt="Screenshot 2023-09-05 184906" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/b2a24579-fcd6-4187-a513-8e3a3153c3c2">
