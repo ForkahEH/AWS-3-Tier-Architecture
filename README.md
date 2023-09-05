@@ -8,7 +8,9 @@ A three tier architecture has a number of advantages including decreased app dep
 In this project, a three tier application is created using AWS resources.
 
 Step 1: Create the VPC 
+
 In the AWS Console Home, search for and select "VPC" resource.
+
 In the VPC Console click create VPC
 <img width="902" alt="Screenshot 2023-09-05 135539" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/5e8f3e22-1ed8-4e6e-aabd-c3d374c26793">
 IPv4 CIDR block: 10.0.0.0/16
