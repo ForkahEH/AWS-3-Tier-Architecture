@@ -1,6 +1,6 @@
 <h1>AWS 3 tier application architecture</h1>
 
-Overview
+<h1>Overview</h1>
 
 A three-tier application separates an application into three logical and physical computing tiers: a web tier, an application tier and a data tier.  
 Users interact with the presentation/web tier(usually called the front-end), the business logic is processed in the application tier and the data is stored  and managed in the data tier(usually called the back-end).
