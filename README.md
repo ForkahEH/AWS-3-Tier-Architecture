@@ -98,10 +98,11 @@ systemctl enable httpd
 
 cd var/www/html
 
-sudo echo '<h1> ELUS MEDICAL CONSULT</h1>' >> index.html
-Click "Launch Instance"
+sudo echo "<h1> ELUS MEDICAL CONSULT</h1>" >> index.html
 
-Click "View Instances"
+4. Click "Launch Instance"
+
+5. Click "View Instances"
 
 ![Picture1](https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/357f95ba-9459-4839-b9d9-94b5a324f7e3)
 <img width="647" alt="Screenshot 2023-09-05 183324" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/9b349d55-fb82-4d76-95a5-c31000aaf7cc">
