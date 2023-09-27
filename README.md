@@ -335,7 +335,7 @@ In the Route tables page, select private route tables 1 and 2 and check that the
 
 <img width="654" alt="Screenshot 2023-09-05 201345" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/23d3a176-586f-4bbf-8106-340f86c67835">
 
-7. Under Settings, enter the name of the datebase: threetiervpcdatabse
+7. Under Settings, enter the name of the datebase: threetiervpcdatabase
 
 <img width="584" alt="Screenshot 2023-09-05 201729" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/5e2d077f-bf6f-4be5-9671-c577530f8f74">
 
