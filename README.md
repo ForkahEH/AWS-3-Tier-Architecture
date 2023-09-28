@@ -147,7 +147,7 @@ Confirm the rest of the settings and click "Create launch template".
 
 10. Click "Create Auto Scaling group"
 
-11. In the Create Auto Scaling group page, enter the name of the Auto Scalig group: WebServerASG
+11. In the Create Auto Scaling group page, enter the name of the Auto Scaling group: WebServerASG
 
 <img width="857" alt="Screenshot 2023-09-05 161640" src="https://github.com/ForkahEH/AWS-3-Tier-Architecture/assets/127892742/c4630e49-97e8-4459-973d-3d22cab7f784">
 
